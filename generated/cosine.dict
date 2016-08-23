@@ -1,0 +1,734 @@
+@name@#cosine#@epsilon@#x"358637bd"; -- 0.000001f#@unaryType0@#0 => pipe,
+@unaryType1@#@connection0@#to_unary(0)(0) <= from_external(0);
+to_unary_req(0)(0) <= from_external_req(0);
+from_external_ack(0) <= to_unary_ack(0)(0);
+
+@connection1@#@weight0@#0 => x"3f800000", -- 1.000000f
+@weight1@#@edgeType0@#0 => simple,
+@edgeType1@#@copyOutputs0@#0 => 1,
+@copyOutputs1@#@connection1@#to_copy(0) <= from_unary(0)(0);
+to_copy_req(0) <= from_unary_req(0)(0);
+from_unary_ack(0)(0) <=to_copy_ack(0);
+
+@connection2@#@connection2@#to_edge(0) <= from_copy(0)(0);
+to_edge_req(0) <= from_copy_req(0)(0);
+from_copy_ack(0)(0) <=to_edge_ack(0);
+
+@connection3@#@mergeBias0@#0 => x"00000000", -- 0.000000f
+@mergeBias1@#@mergeInputs0@#0 => 1,
+@mergeInputs1@#@mergeType0@#0 => simple_sum,
+@mergeType1@#@connection3@#to_merge(0)(0) <= from_edge(0);
+to_merge_req(0)(0) <= from_edge_req(0);
+from_edge_ack(0) <= to_merge_ack(0)(0);
+
+@connection4@#@unaryType1@#1 => pipe,
+@unaryType2@#@connection4@#to_unary(1)(0) <= from_merge(0);
+to_unary_req(1)(0) <= from_merge_req(0);
+from_merge_ack(0) <= to_unary_ack(1)(0);
+
+@connection5@#@weight1@#1 => x"3f800000", -- 1.000000f
+@weight2@#@edgeType1@#1 => simple,
+@edgeType2@#@copyOutputs1@#1 => 1,
+@copyOutputs2@#@connection5@#to_copy(1) <= from_unary(1)(0);
+to_copy_req(1) <= from_unary_req(1)(0);
+from_unary_ack(1)(0) <=to_copy_ack(1);
+
+@connection6@#@connection6@#to_edge(1) <= from_copy(1)(0);
+to_edge_req(1) <= from_copy_req(1)(0);
+from_copy_ack(1)(0) <=to_edge_ack(1);
+
+@connection7@#@mergeBias1@#1 => x"00000000", -- 0.000000f
+@mergeBias2@#@mergeInputs1@#1 => 1,
+@mergeInputs2@#@mergeType1@#1 => simple_sum,
+@mergeType2@#@connection7@#to_merge(1)(0) <= from_edge(1);
+to_merge_req(1)(0) <= from_edge_req(1);
+from_edge_ack(1) <= to_merge_ack(1)(0);
+
+@connection8@#@unaryType2@#2 => absolute,
+@unaryType3@#@connection8@#to_unary(2)(0) <= from_merge(1);
+to_unary_req(2)(0) <= from_merge_req(1);
+from_merge_ack(1) <= to_unary_ack(2)(0);
+
+@connection9@#@weight2@#2 => x"3f800000", -- 1.000000f
+@weight3@#@edgeType2@#2 => simple,
+@edgeType3@#@copyOutputs2@#2 => 1,
+@copyOutputs3@#@connection9@#to_copy(2) <= from_unary(2)(0);
+to_copy_req(2) <= from_unary_req(2)(0);
+from_unary_ack(2)(0) <=to_copy_ack(2);
+
+@connection10@#@connection10@#to_edge(2) <= from_copy(2)(0);
+to_edge_req(2) <= from_copy_req(2)(0);
+from_copy_ack(2)(0) <=to_edge_ack(2);
+
+@connection11@#@mergeBias2@#2 => x"bf22f983", -- -0.636620f
+@mergeBias3@#@mergeInputs2@#2 => 1,
+@mergeInputs3@#@mergeType2@#2 => prod,
+@mergeType3@#@connection11@#to_merge(2)(0) <= from_edge(2);
+to_merge_req(2)(0) <= from_edge_req(2);
+from_edge_ack(2) <= to_merge_ack(2)(0);
+
+@connection12@#@srcValue0@#0 => x"40800000", -- 4.000000f
+@srcValue1@#@binaryType0@#0 => fmod,
+@binaryType1@#@connection12@#to_binary(0)(0) <= from_merge(2);
+to_binary_req(0)(0) <= from_merge_req(2);
+from_merge_ack(2) <= to_binary_ack(0)(0);
+
+@connection13@#@connection13@#to_binary(0)(1) <= from_source(0);
+to_binary_req(0)(1) <= from_source_req(0);
+from_source_ack(0) <= to_binary_ack(0)(1);
+
+@connection14@#@weight3@#3 => x"3f800000", -- 1.000000f
+@weight4@#@edgeType3@#3 => simple,
+@edgeType4@#@weight4@#4 => x"3f800000", -- 1.000000f
+@weight5@#@edgeType4@#4 => simple,
+@edgeType5@#@copyOutputs3@#3 => 2,
+@copyOutputs4@#@connection14@#to_copy(3) <= from_binary(0)(0);
+to_copy_req(3) <= from_binary_req(0)(0);
+from_binary_ack(0)(0) <=to_copy_ack(3);
+
+@connection15@#@connection15@#to_edge(3) <= from_copy(3)(0);
+to_edge_req(3) <= from_copy_req(3)(0);
+from_copy_ack(3)(0) <=to_edge_ack(3);
+
+@connection16@#@connection16@#to_edge(4) <= from_copy(3)(1);
+to_edge_req(4) <= from_copy_req(3)(1);
+from_copy_ack(3)(1) <=to_edge_ack(4);
+
+@connection17@#@mergeBias3@#3 => x"00000000", -- 0.000000f
+@mergeBias4@#@mergeInputs3@#3 => 1,
+@mergeInputs4@#@mergeType3@#3 => simple_sum,
+@mergeType4@#@connection17@#to_merge(3)(0) <= from_edge(4);
+to_merge_req(3)(0) <= from_edge_req(4);
+from_edge_ack(4) <= to_merge_ack(3)(0);
+
+@connection18@#@unaryType3@#3 => pipe,
+@unaryType4@#@connection18@#to_unary(3)(0) <= from_merge(3);
+to_unary_req(3)(0) <= from_merge_req(3);
+from_merge_ack(3) <= to_unary_ack(3)(0);
+
+@connection19@#@weight5@#5 => x"3f800000", -- 1.000000f
+@weight6@#@edgeType5@#5 => simple,
+@edgeType6@#@weight6@#6 => x"3f800000", -- 1.000000f
+@weight7@#@edgeType6@#6 => simple,
+@edgeType7@#@copyOutputs4@#4 => 2,
+@copyOutputs5@#@connection19@#to_copy(4) <= from_unary(3)(0);
+to_copy_req(4) <= from_unary_req(3)(0);
+from_unary_ack(3)(0) <=to_copy_ack(4);
+
+@connection20@#@connection20@#to_edge(5) <= from_copy(4)(0);
+to_edge_req(5) <= from_copy_req(4)(0);
+from_copy_ack(4)(0) <=to_edge_ack(5);
+
+@connection21@#@connection21@#to_edge(6) <= from_copy(4)(1);
+to_edge_req(6) <= from_copy_req(4)(1);
+from_copy_ack(4)(1) <=to_edge_ack(6);
+
+@connection22@#@mergeBias4@#4 => x"00000000", -- 0.000000f
+@mergeBias5@#@mergeInputs4@#4 => 1,
+@mergeInputs5@#@mergeType4@#4 => simple_sum,
+@mergeType5@#@connection22@#to_merge(4)(0) <= from_edge(3);
+to_merge_req(4)(0) <= from_edge_req(3);
+from_edge_ack(3) <= to_merge_ack(4)(0);
+
+@connection23@#@unaryType4@#4 => absolute,
+@unaryType5@#@connection23@#to_unary(4)(0) <= from_merge(4);
+to_unary_req(4)(0) <= from_merge_req(4);
+from_merge_ack(4) <= to_unary_ack(4)(0);
+
+@connection24@#@weight7@#7 => x"3f800000", -- 1.000000f
+@weight8@#@edgeType7@#7 => simple,
+@edgeType8@#@copyOutputs5@#5 => 1,
+@copyOutputs6@#@connection24@#to_copy(5) <= from_unary(4)(0);
+to_copy_req(5) <= from_unary_req(4)(0);
+from_unary_ack(4)(0) <=to_copy_ack(5);
+
+@connection25@#@connection25@#to_edge(7) <= from_copy(5)(0);
+to_edge_req(7) <= from_copy_req(5)(0);
+from_copy_ack(5)(0) <=to_edge_ack(7);
+
+@connection26@#@mergeBias5@#5 => x"00000000", -- 0.000000f
+@mergeBias6@#@mergeInputs5@#5 => 1,
+@mergeInputs6@#@mergeType5@#5 => simple_sum,
+@mergeType6@#@connection26@#to_merge(5)(0) <= from_edge(7);
+to_merge_req(5)(0) <= from_edge_req(7);
+from_edge_ack(7) <= to_merge_ack(5)(0);
+
+@connection27@#@unaryType5@#5 => pipe,
+@unaryType6@#@connection27@#to_unary(5)(0) <= from_merge(5);
+to_unary_req(5)(0) <= from_merge_req(5);
+from_merge_ack(5) <= to_unary_ack(5)(0);
+
+@connection28@#@weight8@#8 => x"3f800000", -- 1.000000f
+@weight9@#@edgeType8@#8 => simple,
+@edgeType9@#@weight9@#9 => x"3f800000", -- 1.000000f
+@weight10@#@edgeType9@#9 => simple,
+@edgeType10@#@weight10@#10 => x"3f800000", -- 1.000000f
+@weight11@#@edgeType10@#10 => simple,
+@edgeType11@#@weight11@#11 => x"3f800000", -- 1.000000f
+@weight12@#@edgeType11@#11 => simple,
+@edgeType12@#@copyOutputs6@#6 => 4,
+@copyOutputs7@#@connection28@#to_copy(6) <= from_unary(5)(0);
+to_copy_req(6) <= from_unary_req(5)(0);
+from_unary_ack(5)(0) <=to_copy_ack(6);
+
+@connection29@#@connection29@#to_edge(8) <= from_copy(6)(0);
+to_edge_req(8) <= from_copy_req(6)(0);
+from_copy_ack(6)(0) <=to_edge_ack(8);
+
+@connection30@#@connection30@#to_edge(9) <= from_copy(6)(1);
+to_edge_req(9) <= from_copy_req(6)(1);
+from_copy_ack(6)(1) <=to_edge_ack(9);
+
+@connection31@#@connection31@#to_edge(10) <= from_copy(6)(2);
+to_edge_req(10) <= from_copy_req(6)(2);
+from_copy_ack(6)(2) <=to_edge_ack(10);
+
+@connection32@#@connection32@#to_edge(11) <= from_copy(6)(3);
+to_edge_req(11) <= from_copy_req(6)(3);
+from_copy_ack(6)(3) <=to_edge_ack(11);
+
+@connection33@#@mergeBias6@#6 => x"c0400000", -- -3.000000f
+@mergeBias7@#@mergeInputs6@#6 => 1,
+@mergeInputs7@#@mergeType6@#6 => sum,
+@mergeType7@#@connection33@#to_merge(6)(0) <= from_edge(10);
+to_merge_req(6)(0) <= from_edge_req(10);
+from_edge_ack(10) <= to_merge_ack(6)(0);
+
+@connection34@#@unaryType6@#6 => pipe,
+@unaryType7@#@connection34@#to_unary(6)(0) <= from_merge(6);
+to_unary_req(6)(0) <= from_merge_req(6);
+from_merge_ack(6) <= to_unary_ack(6)(0);
+
+@connection35@#@weight12@#12 => x"3f800000", -- 1.000000f
+@weight13@#@edgeType12@#12 => simple,
+@edgeType13@#@weight13@#13 => x"3f800000", -- 1.000000f
+@weight14@#@edgeType13@#13 => simple,
+@edgeType14@#@copyOutputs7@#7 => 2,
+@copyOutputs8@#@connection35@#to_copy(7) <= from_unary(6)(0);
+to_copy_req(7) <= from_unary_req(6)(0);
+from_unary_ack(6)(0) <=to_copy_ack(7);
+
+@connection36@#@connection36@#to_edge(12) <= from_copy(7)(0);
+to_edge_req(12) <= from_copy_req(7)(0);
+from_copy_ack(7)(0) <=to_edge_ack(12);
+
+@connection37@#@connection37@#to_edge(13) <= from_copy(7)(1);
+to_edge_req(13) <= from_copy_req(7)(1);
+from_copy_ack(7)(1) <=to_edge_ack(13);
+
+@connection38@#@mergeBias7@#7 => x"c0000000", -- -2.000000f
+@mergeBias8@#@mergeInputs7@#7 => 1,
+@mergeInputs8@#@mergeType7@#7 => sum,
+@mergeType8@#@connection38@#to_merge(7)(0) <= from_edge(9);
+to_merge_req(7)(0) <= from_edge_req(9);
+from_edge_ack(9) <= to_merge_ack(7)(0);
+
+@connection39@#@unaryType7@#7 => pipe,
+@unaryType8@#@connection39@#to_unary(7)(0) <= from_merge(7);
+to_unary_req(7)(0) <= from_merge_req(7);
+from_merge_ack(7) <= to_unary_ack(7)(0);
+
+@connection40@#@weight14@#14 => x"3f800000", -- 1.000000f
+@weight15@#@edgeType14@#14 => simple,
+@edgeType15@#@weight15@#15 => x"3f800000", -- 1.000000f
+@weight16@#@edgeType15@#15 => simple,
+@edgeType16@#@copyOutputs8@#8 => 2,
+@copyOutputs9@#@connection40@#to_copy(8) <= from_unary(7)(0);
+to_copy_req(8) <= from_unary_req(7)(0);
+from_unary_ack(7)(0) <=to_copy_ack(8);
+
+@connection41@#@connection41@#to_edge(14) <= from_copy(8)(0);
+to_edge_req(14) <= from_copy_req(8)(0);
+from_copy_ack(8)(0) <=to_edge_ack(14);
+
+@connection42@#@connection42@#to_edge(15) <= from_copy(8)(1);
+to_edge_req(15) <= from_copy_req(8)(1);
+from_copy_ack(8)(1) <=to_edge_ack(15);
+
+@connection43@#@mergeBias8@#8 => x"bf800000", -- -1.000000f
+@mergeBias9@#@mergeInputs8@#8 => 1,
+@mergeInputs9@#@mergeType8@#8 => sum,
+@mergeType9@#@connection43@#to_merge(8)(0) <= from_edge(8);
+to_merge_req(8)(0) <= from_edge_req(8);
+from_edge_ack(8) <= to_merge_ack(8)(0);
+
+@connection44@#@unaryType8@#8 => pipe,
+@unaryType9@#@connection44@#to_unary(8)(0) <= from_merge(8);
+to_unary_req(8)(0) <= from_merge_req(8);
+from_merge_ack(8) <= to_unary_ack(8)(0);
+
+@connection45@#@weight16@#16 => x"3f800000", -- 1.000000f
+@weight17@#@edgeType16@#16 => simple,
+@edgeType17@#@weight17@#17 => x"3f800000", -- 1.000000f
+@weight18@#@edgeType17@#17 => simple,
+@edgeType18@#@copyOutputs9@#9 => 2,
+@copyOutputs10@#@connection45@#to_copy(9) <= from_unary(8)(0);
+to_copy_req(9) <= from_unary_req(8)(0);
+from_unary_ack(8)(0) <=to_copy_ack(9);
+
+@connection46@#@connection46@#to_edge(16) <= from_copy(9)(0);
+to_edge_req(16) <= from_copy_req(9)(0);
+from_copy_ack(9)(0) <=to_edge_ack(16);
+
+@connection47@#@connection47@#to_edge(17) <= from_copy(9)(1);
+to_edge_req(17) <= from_copy_req(9)(1);
+from_copy_ack(9)(1) <=to_edge_ack(17);
+
+@connection48@#@mergeBias9@#9 => x"00000000", -- 0.000000f
+@mergeBias10@#@mergeInputs9@#9 => 1,
+@mergeInputs10@#@mergeType9@#9 => simple_sum,
+@mergeType10@#@connection48@#to_merge(9)(0) <= from_edge(12);
+to_merge_req(9)(0) <= from_edge_req(12);
+from_edge_ack(12) <= to_merge_ack(9)(0);
+
+@connection49@#@mergeBias10@#10 => x"40800000", -- 4.000000f
+@mergeBias11@#@mergeInputs10@#10 => 1,
+@mergeInputs11@#@mergeType10@#10 => sum,
+@mergeType11@#@connection49@#to_merge(10)(0) <= from_edge(6);
+to_merge_req(10)(0) <= from_edge_req(6);
+from_edge_ack(6) <= to_merge_ack(10)(0);
+
+@connection50@#@mergeBias11@#11 => x"00000000", -- 0.000000f
+@mergeBias12@#@mergeInputs11@#11 => 1,
+@mergeInputs12@#@mergeType11@#11 => simple_sum,
+@mergeType12@#@connection50@#to_merge(11)(0) <= from_edge(14);
+to_merge_req(11)(0) <= from_edge_req(14);
+from_edge_ack(14) <= to_merge_ack(11)(0);
+
+@connection51@#@ternaryType0@#0 => greater_than_zero,
+@ternaryType1@#@connection51@#to_ternary(0)(0) <= from_merge(9);
+to_ternary_req(0)(0) <= from_merge_req(9);
+from_merge_ack(9) <= to_ternary_ack(0)(0);
+
+@connection52@#@connection52@#to_ternary(0)(1) <= from_merge(10);
+to_ternary_req(0)(1) <= from_merge_req(10);
+from_merge_ack(10) <= to_ternary_ack(0)(1);
+
+@connection53@#@connection53@#to_ternary(0)(2) <= from_merge(11);
+to_ternary_req(0)(2) <= from_merge_req(11);
+from_merge_ack(11) <= to_ternary_ack(0)(2);
+
+@connection54@#@weight18@#18 => x"3f800000", -- 1.000000f
+@weight19@#@edgeType18@#18 => simple,
+@edgeType19@#@copyOutputs10@#10 => 1,
+@copyOutputs11@#@connection54@#to_copy(10) <= from_ternary(0)(0);
+to_copy_req(10) <= from_ternary_req(0)(0);
+from_ternary_ack(0)(0) <=to_copy_ack(10);
+
+@connection55@#@connection55@#to_edge(18) <= from_copy(10)(0);
+to_edge_req(18) <= from_copy_req(10)(0);
+from_copy_ack(10)(0) <=to_edge_ack(18);
+
+@connection56@#@mergeBias12@#12 => x"00000000", -- 0.000000f
+@mergeBias13@#@mergeInputs12@#12 => 1,
+@mergeInputs13@#@mergeType12@#12 => simple_sum,
+@mergeType13@#@connection56@#to_merge(12)(0) <= from_edge(16);
+to_merge_req(12)(0) <= from_edge_req(16);
+from_edge_ack(16) <= to_merge_ack(12)(0);
+
+@connection57@#@mergeBias13@#13 => x"40000000", -- 2.000000f
+@mergeBias14@#@mergeInputs13@#13 => 1,
+@mergeInputs14@#@mergeType13@#13 => sum,
+@mergeType14@#@connection57@#to_merge(13)(0) <= from_edge(5);
+to_merge_req(13)(0) <= from_edge_req(5);
+from_edge_ack(5) <= to_merge_ack(13)(0);
+
+@connection58@#@mergeBias14@#14 => x"00000000", -- 0.000000f
+@mergeBias15@#@mergeInputs14@#14 => 1,
+@mergeInputs15@#@mergeType14@#14 => simple_sum,
+@mergeType15@#@connection58@#to_merge(14)(0) <= from_edge(11);
+to_merge_req(14)(0) <= from_edge_req(11);
+from_edge_ack(11) <= to_merge_ack(14)(0);
+
+@connection59@#@ternaryType1@#1 => greater_than_zero,
+@ternaryType2@#@connection59@#to_ternary(1)(0) <= from_merge(12);
+to_ternary_req(1)(0) <= from_merge_req(12);
+from_merge_ack(12) <= to_ternary_ack(1)(0);
+
+@connection60@#@connection60@#to_ternary(1)(1) <= from_merge(13);
+to_ternary_req(1)(1) <= from_merge_req(13);
+from_merge_ack(13) <= to_ternary_ack(1)(1);
+
+@connection61@#@connection61@#to_ternary(1)(2) <= from_merge(14);
+to_ternary_req(1)(2) <= from_merge_req(14);
+from_merge_ack(14) <= to_ternary_ack(1)(2);
+
+@connection62@#@weight19@#19 => x"3f800000", -- 1.000000f
+@weight20@#@edgeType19@#19 => simple,
+@edgeType20@#@copyOutputs11@#11 => 1,
+@copyOutputs12@#@connection62@#to_copy(11) <= from_ternary(1)(0);
+to_copy_req(11) <= from_ternary_req(1)(0);
+from_ternary_ack(1)(0) <=to_copy_ack(11);
+
+@connection63@#@connection63@#to_edge(19) <= from_copy(11)(0);
+to_edge_req(19) <= from_copy_req(11)(0);
+from_copy_ack(11)(0) <=to_edge_ack(19);
+
+@connection64@#@mergeBias15@#15 => x"00000000", -- 0.000000f
+@mergeBias16@#@mergeInputs15@#15 => 1,
+@mergeInputs16@#@mergeType15@#15 => simple_sum,
+@mergeType16@#@connection64@#to_merge(15)(0) <= from_edge(15);
+to_merge_req(15)(0) <= from_edge_req(15);
+from_edge_ack(15) <= to_merge_ack(15)(0);
+
+@connection65@#@mergeBias16@#16 => x"00000000", -- 0.000000f
+@mergeBias17@#@mergeInputs16@#16 => 1,
+@mergeInputs17@#@mergeType16@#16 => simple_sum,
+@mergeType17@#@connection65@#to_merge(16)(0) <= from_edge(18);
+to_merge_req(16)(0) <= from_edge_req(18);
+from_edge_ack(18) <= to_merge_ack(16)(0);
+
+@connection66@#@mergeBias17@#17 => x"00000000", -- 0.000000f
+@mergeBias18@#@mergeInputs17@#17 => 1,
+@mergeInputs18@#@mergeType17@#17 => simple_sum,
+@mergeType18@#@connection66@#to_merge(17)(0) <= from_edge(19);
+to_merge_req(17)(0) <= from_edge_req(19);
+from_edge_ack(19) <= to_merge_ack(17)(0);
+
+@connection67@#@ternaryType2@#2 => greater_than_zero,
+@ternaryType3@#@connection67@#to_ternary(2)(0) <= from_merge(15);
+to_ternary_req(2)(0) <= from_merge_req(15);
+from_merge_ack(15) <= to_ternary_ack(2)(0);
+
+@connection68@#@connection68@#to_ternary(2)(1) <= from_merge(16);
+to_ternary_req(2)(1) <= from_merge_req(16);
+from_merge_ack(16) <= to_ternary_ack(2)(1);
+
+@connection69@#@connection69@#to_ternary(2)(2) <= from_merge(17);
+to_ternary_req(2)(2) <= from_merge_req(17);
+from_merge_ack(17) <= to_ternary_ack(2)(2);
+
+@connection70@#@weight20@#20 => x"3f800000", -- 1.000000f
+@weight21@#@edgeType20@#20 => simple,
+@edgeType21@#@copyOutputs12@#12 => 1,
+@copyOutputs13@#@connection70@#to_copy(12) <= from_ternary(2)(0);
+to_copy_req(12) <= from_ternary_req(2)(0);
+from_ternary_ack(2)(0) <=to_copy_ack(12);
+
+@connection71@#@connection71@#to_edge(20) <= from_copy(12)(0);
+to_edge_req(20) <= from_copy_req(12)(0);
+from_copy_ack(12)(0) <=to_edge_ack(20);
+
+@connection72@#@mergeBias18@#18 => x"00000000", -- 0.000000f
+@mergeBias19@#@mergeInputs18@#18 => 1,
+@mergeInputs19@#@mergeType18@#18 => simple_sum,
+@mergeType19@#@connection72@#to_merge(18)(0) <= from_edge(20);
+to_merge_req(18)(0) <= from_edge_req(20);
+from_edge_ack(20) <= to_merge_ack(18)(0);
+
+@connection73@#@unaryType9@#9 => pipe,
+@unaryType10@#@connection73@#to_unary(9)(0) <= from_merge(18);
+to_unary_req(9)(0) <= from_merge_req(18);
+from_merge_ack(18) <= to_unary_ack(9)(0);
+
+@connection74@#@weight21@#21 => x"3f800000", -- 1.000000f
+@weight22@#@edgeType21@#21 => simple,
+@edgeType22@#@weight22@#22 => x"3f800000", -- 1.000000f
+@weight23@#@edgeType22@#22 => simple,
+@edgeType23@#@copyOutputs13@#13 => 2,
+@copyOutputs14@#@connection74@#to_copy(13) <= from_unary(9)(0);
+to_copy_req(13) <= from_unary_req(9)(0);
+from_unary_ack(9)(0) <=to_copy_ack(13);
+
+@connection75@#@connection75@#to_edge(21) <= from_copy(13)(0);
+to_edge_req(21) <= from_copy_req(13)(0);
+from_copy_ack(13)(0) <=to_edge_ack(21);
+
+@connection76@#@connection76@#to_edge(22) <= from_copy(13)(1);
+to_edge_req(22) <= from_copy_req(13)(1);
+from_copy_ack(13)(1) <=to_edge_ack(22);
+
+@connection77@#@mergeBias19@#19 => x"3f9cd853", -- 1.225352f
+@mergeBias20@#@mergeInputs19@#19 => 2,
+@mergeInputs20@#@mergeType19@#19 => prod,
+@mergeType20@#@connection77@#to_merge(19)(0) <= from_edge(21);
+to_merge_req(19)(0) <= from_edge_req(21);
+from_edge_ack(21) <= to_merge_ack(19)(0);
+
+@connection78@#@connection78@#to_merge(19)(1) <= from_edge(22);
+to_merge_req(19)(1) <= from_edge_req(22);
+from_edge_ack(22) <= to_merge_ack(19)(1);
+
+@connection79@#@unaryType10@#10 => pipe,
+@unaryType11@#@connection79@#to_unary(10)(0) <= from_merge(19);
+to_unary_req(10)(0) <= from_merge_req(19);
+from_merge_ack(19) <= to_unary_ack(10)(0);
+
+@connection80@#@connection80@#to_unary(10)(0) <= from_merge(19);
+to_unary_req(10)(0) <= from_merge_req(19);
+from_merge_ack(19) <= to_unary_ack(10)(0);
+
+@connection81@#@weight23@#23 => x"3f800000", -- 1.000000f
+@weight24@#@edgeType23@#23 => simple,
+@edgeType24@#@weight24@#24 => x"3f800000", -- 1.000000f
+@weight25@#@edgeType24@#24 => simple,
+@edgeType25@#@weight25@#25 => x"3f800000", -- 1.000000f
+@weight26@#@edgeType25@#25 => simple,
+@edgeType26@#@copyOutputs14@#14 => 3,
+@copyOutputs15@#@connection81@#to_copy(14) <= from_unary(10)(0);
+to_copy_req(14) <= from_unary_req(10)(0);
+from_unary_ack(10)(0) <=to_copy_ack(14);
+
+@connection82@#@connection82@#to_edge(23) <= from_copy(14)(0);
+to_edge_req(23) <= from_copy_req(14)(0);
+from_copy_ack(14)(0) <=to_edge_ack(23);
+
+@connection83@#@connection83@#to_edge(24) <= from_copy(14)(1);
+to_edge_req(24) <= from_copy_req(14)(1);
+from_copy_ack(14)(1) <=to_edge_ack(24);
+
+@connection84@#@connection84@#to_edge(25) <= from_copy(14)(2);
+to_edge_req(25) <= from_copy_req(14)(2);
+from_copy_ack(14)(2) <=to_edge_ack(25);
+
+@connection85@#@mergeBias20@#20 => x"be19b011", -- -0.150086f
+@mergeBias21@#@mergeInputs20@#20 => 2,
+@mergeInputs21@#@mergeType20@#20 => prod,
+@mergeType21@#@connection85@#to_merge(20)(0) <= from_edge(23);
+to_merge_req(20)(0) <= from_edge_req(23);
+from_edge_ack(23) <= to_merge_ack(20)(0);
+
+@connection86@#@connection86@#to_merge(20)(1) <= from_edge(24);
+to_merge_req(20)(1) <= from_edge_req(24);
+from_edge_ack(24) <= to_merge_ack(20)(1);
+
+@connection87@#@unaryType11@#11 => pipe,
+@unaryType12@#@connection87@#to_unary(11)(0) <= from_merge(20);
+to_unary_req(11)(0) <= from_merge_req(20);
+from_merge_ack(20) <= to_unary_ack(11)(0);
+
+@connection88@#@connection88@#to_unary(11)(0) <= from_merge(20);
+to_unary_req(11)(0) <= from_merge_req(20);
+from_merge_ack(20) <= to_unary_ack(11)(0);
+
+@connection89@#@weight26@#26 => x"3f800000", -- 1.000000f
+@weight27@#@edgeType26@#26 => simple,
+@edgeType27@#@copyOutputs15@#15 => 1,
+@copyOutputs16@#@connection89@#to_copy(15) <= from_unary(11)(0);
+to_copy_req(15) <= from_unary_req(11)(0);
+from_unary_ack(11)(0) <=to_copy_ack(15);
+
+@connection90@#@connection90@#to_edge(26) <= from_copy(15)(0);
+to_edge_req(26) <= from_copy_req(15)(0);
+from_copy_ack(15)(0) <=to_edge_ack(26);
+
+@connection91@#@mergeBias21@#21 => x"bf800000", -- -1.000000f
+@mergeBias22@#@mergeInputs21@#21 => 2,
+@mergeInputs22@#@mergeType21@#21 => sum,
+@mergeType22@#@connection91@#to_merge(21)(0) <= from_edge(25);
+to_merge_req(21)(0) <= from_edge_req(25);
+from_edge_ack(25) <= to_merge_ack(21)(0);
+
+@connection92@#@connection92@#to_merge(21)(1) <= from_edge(26);
+to_merge_req(21)(1) <= from_edge_req(26);
+from_edge_ack(26) <= to_merge_ack(21)(1);
+
+@connection93@#@unaryType12@#12 => pipe,
+@unaryType13@#@connection93@#to_unary(12)(0) <= from_merge(21);
+to_unary_req(12)(0) <= from_merge_req(21);
+from_merge_ack(21) <= to_unary_ack(12)(0);
+
+@connection94@#@connection94@#to_unary(12)(0) <= from_merge(21);
+to_unary_req(12)(0) <= from_merge_req(21);
+from_merge_ack(21) <= to_unary_ack(12)(0);
+
+@connection95@#@weight27@#27 => x"3f800000", -- 1.000000f
+@weight28@#@edgeType27@#27 => simple,
+@edgeType28@#@weight28@#28 => x"3f800000", -- 1.000000f
+@weight29@#@edgeType28@#28 => simple,
+@edgeType29@#@copyOutputs16@#16 => 2,
+@copyOutputs17@#@connection95@#to_copy(16) <= from_unary(12)(0);
+to_copy_req(16) <= from_unary_req(12)(0);
+from_unary_ack(12)(0) <=to_copy_ack(16);
+
+@connection96@#@connection96@#to_edge(27) <= from_copy(16)(0);
+to_edge_req(27) <= from_copy_req(16)(0);
+from_copy_ack(16)(0) <=to_edge_ack(27);
+
+@connection97@#@connection97@#to_edge(28) <= from_copy(16)(1);
+to_edge_req(28) <= from_copy_req(16)(1);
+from_copy_ack(16)(1) <=to_edge_ack(28);
+
+@connection98@#@mergeBias22@#22 => x"00000000", -- 0.000000f
+@mergeBias23@#@mergeInputs22@#22 => 1,
+@mergeInputs23@#@mergeType22@#22 => simple_sum,
+@mergeType23@#@connection98@#to_merge(22)(0) <= from_edge(28);
+to_merge_req(22)(0) <= from_edge_req(28);
+from_edge_ack(28) <= to_merge_ack(22)(0);
+
+@connection99@#@unaryType13@#13 => pipe,
+@unaryType14@#@connection99@#to_unary(13)(0) <= from_merge(22);
+to_unary_req(13)(0) <= from_merge_req(22);
+from_merge_ack(22) <= to_unary_ack(13)(0);
+
+@connection100@#@weight29@#29 => x"3f800000", -- 1.000000f
+@weight30@#@edgeType29@#29 => simple,
+@edgeType30@#@copyOutputs17@#17 => 1,
+@copyOutputs18@#@connection100@#to_copy(17) <= from_unary(13)(0);
+to_copy_req(17) <= from_unary_req(13)(0);
+from_unary_ack(13)(0) <=to_copy_ack(17);
+
+@connection101@#@connection101@#to_edge(29) <= from_copy(17)(0);
+to_edge_req(29) <= from_copy_req(17)(0);
+from_copy_ack(17)(0) <=to_edge_ack(29);
+
+@connection102@#@mergeBias23@#23 => x"00000000", -- 0.000000f
+@mergeBias24@#@mergeInputs23@#23 => 1,
+@mergeInputs24@#@mergeType23@#23 => simple_sum,
+@mergeType24@#@connection102@#to_merge(23)(0) <= from_edge(27);
+to_merge_req(23)(0) <= from_edge_req(27);
+from_edge_ack(27) <= to_merge_ack(23)(0);
+
+@connection103@#@unaryType14@#14 => absolute,
+@unaryType15@#@connection103@#to_unary(14)(0) <= from_merge(23);
+to_unary_req(14)(0) <= from_merge_req(23);
+from_merge_ack(23) <= to_unary_ack(14)(0);
+
+@connection104@#@weight30@#30 => x"3f800000", -- 1.000000f
+@weight31@#@edgeType30@#30 => simple,
+@edgeType31@#@copyOutputs18@#18 => 1,
+@copyOutputs19@#@connection104@#to_copy(18) <= from_unary(14)(0);
+to_copy_req(18) <= from_unary_req(14)(0);
+from_unary_ack(14)(0) <=to_copy_ack(18);
+
+@connection105@#@connection105@#to_edge(30) <= from_copy(18)(0);
+to_edge_req(30) <= from_copy_req(18)(0);
+from_copy_ack(18)(0) <=to_edge_ack(30);
+
+@connection106@#@mergeBias24@#24 => x"00000000", -- 0.000000f
+@mergeBias25@#@mergeInputs24@#24 => 1,
+@mergeInputs25@#@mergeType24@#24 => simple_sum,
+@mergeType25@#@connection106@#to_merge(24)(0) <= from_edge(30);
+to_merge_req(24)(0) <= from_edge_req(30);
+from_edge_ack(30) <= to_merge_ack(24)(0);
+
+@connection107@#@unaryType15@#15 => pipe,
+@unaryType16@#@connection107@#to_unary(15)(0) <= from_merge(24);
+to_unary_req(15)(0) <= from_merge_req(24);
+from_merge_ack(24) <= to_unary_ack(15)(0);
+
+@connection108@#@weight31@#31 => x"3f800000", -- 1.000000f
+@weight32@#@edgeType31@#31 => simple,
+@edgeType32@#@weight32@#32 => x"3f800000", -- 1.000000f
+@weight33@#@edgeType32@#32 => simple,
+@edgeType33@#@copyOutputs19@#19 => 2,
+@copyOutputs20@#@connection108@#to_copy(19) <= from_unary(15)(0);
+to_copy_req(19) <= from_unary_req(15)(0);
+from_unary_ack(15)(0) <=to_copy_ack(19);
+
+@connection109@#@connection109@#to_edge(31) <= from_copy(19)(0);
+to_edge_req(31) <= from_copy_req(19)(0);
+from_copy_ack(19)(0) <=to_edge_ack(31);
+
+@connection110@#@connection110@#to_edge(32) <= from_copy(19)(1);
+to_edge_req(32) <= from_copy_req(19)(1);
+from_copy_ack(19)(1) <=to_edge_ack(32);
+
+@connection111@#@mergeBias25@#25 => x"00000000", -- 0.000000f
+@mergeBias26@#@mergeInputs25@#25 => 1,
+@mergeInputs26@#@mergeType25@#25 => simple_sum,
+@mergeType26@#@connection111@#to_merge(25)(0) <= from_edge(17);
+to_merge_req(25)(0) <= from_edge_req(17);
+from_edge_ack(17) <= to_merge_ack(25)(0);
+
+@connection112@#@mergeBias26@#26 => x"00000000", -- 0.000000f
+@mergeBias27@#@mergeInputs26@#26 => 1,
+@mergeInputs27@#@mergeType26@#26 => simple_sum,
+@mergeType27@#@connection112@#to_merge(26)(0) <= from_edge(29);
+to_merge_req(26)(0) <= from_edge_req(29);
+from_edge_ack(29) <= to_merge_ack(26)(0);
+
+@connection113@#@mergeBias27@#27 => x"00000000", -- 0.000000f
+@mergeBias28@#@mergeInputs27@#27 => 1,
+@mergeInputs28@#@mergeType27@#27 => simple_sum,
+@mergeType28@#@connection113@#to_merge(27)(0) <= from_edge(31);
+to_merge_req(27)(0) <= from_edge_req(31);
+from_edge_ack(31) <= to_merge_ack(27)(0);
+
+@connection114@#@ternaryType3@#3 => greater_than_zero,
+@ternaryType4@#@connection114@#to_ternary(3)(0) <= from_merge(25);
+to_ternary_req(3)(0) <= from_merge_req(25);
+from_merge_ack(25) <= to_ternary_ack(3)(0);
+
+@connection115@#@connection115@#to_ternary(3)(1) <= from_merge(26);
+to_ternary_req(3)(1) <= from_merge_req(26);
+from_merge_ack(26) <= to_ternary_ack(3)(1);
+
+@connection116@#@connection116@#to_ternary(3)(2) <= from_merge(27);
+to_ternary_req(3)(2) <= from_merge_req(27);
+from_merge_ack(27) <= to_ternary_ack(3)(2);
+
+@connection117@#@weight33@#33 => x"3f800000", -- 1.000000f
+@weight34@#@edgeType33@#33 => simple,
+@edgeType34@#@copyOutputs20@#20 => 1,
+@copyOutputs21@#@connection117@#to_copy(20) <= from_ternary(3)(0);
+to_copy_req(20) <= from_ternary_req(3)(0);
+from_ternary_ack(3)(0) <=to_copy_ack(20);
+
+@connection118@#@connection118@#to_edge(33) <= from_copy(20)(0);
+to_edge_req(33) <= from_copy_req(20)(0);
+from_copy_ack(20)(0) <=to_edge_ack(33);
+
+@connection119@#@mergeBias28@#28 => x"00000000", -- 0.000000f
+@mergeBias29@#@mergeInputs28@#28 => 1,
+@mergeInputs29@#@mergeType28@#28 => simple_sum,
+@mergeType29@#@connection119@#to_merge(28)(0) <= from_edge(13);
+to_merge_req(28)(0) <= from_edge_req(13);
+from_edge_ack(13) <= to_merge_ack(28)(0);
+
+@connection120@#@mergeBias29@#29 => x"00000000", -- 0.000000f
+@mergeBias30@#@mergeInputs29@#29 => 1,
+@mergeInputs30@#@mergeType29@#29 => simple_sum,
+@mergeType30@#@connection120@#to_merge(29)(0) <= from_edge(32);
+to_merge_req(29)(0) <= from_edge_req(32);
+from_edge_ack(32) <= to_merge_ack(29)(0);
+
+@connection121@#@mergeBias30@#30 => x"00000000", -- 0.000000f
+@mergeBias31@#@mergeInputs30@#30 => 1,
+@mergeInputs31@#@mergeType30@#30 => simple_sum,
+@mergeType31@#@connection121@#to_merge(30)(0) <= from_edge(33);
+to_merge_req(30)(0) <= from_edge_req(33);
+from_edge_ack(33) <= to_merge_ack(30)(0);
+
+@connection122@#@ternaryType4@#4 => greater_than_zero,
+@ternaryType5@#@connection122@#to_ternary(4)(0) <= from_merge(28);
+to_ternary_req(4)(0) <= from_merge_req(28);
+from_merge_ack(28) <= to_ternary_ack(4)(0);
+
+@connection123@#@connection123@#to_ternary(4)(1) <= from_merge(29);
+to_ternary_req(4)(1) <= from_merge_req(29);
+from_merge_ack(29) <= to_ternary_ack(4)(1);
+
+@connection124@#@connection124@#to_ternary(4)(2) <= from_merge(30);
+to_ternary_req(4)(2) <= from_merge_req(30);
+from_merge_ack(30) <= to_ternary_ack(4)(2);
+
+@connection125@#@weight34@#34 => x"3f800000", -- 1.000000f
+@weight35@#@edgeType34@#34 => simple,
+@edgeType35@#@copyOutputs21@#21 => 1,
+@copyOutputs22@#@connection125@#to_copy(21) <= from_ternary(4)(0);
+to_copy_req(21) <= from_ternary_req(4)(0);
+from_ternary_ack(4)(0) <=to_copy_ack(21);
+
+@connection126@#@connection126@#to_edge(34) <= from_copy(21)(0);
+to_edge_req(34) <= from_copy_req(21)(0);
+from_copy_ack(21)(0) <=to_edge_ack(34);
+
+@connection127@#@mergeBias31@#31 => x"00000000", -- 0.000000f
+@mergeBias32@#@mergeInputs31@#31 => 1,
+@mergeInputs32@#@mergeType31@#31 => simple_sum,
+@mergeType32@#@connection127@#to_merge(31)(0) <= from_edge(34);
+to_merge_req(31)(0) <= from_edge_req(34);
+from_edge_ack(34) <= to_merge_ack(31)(0);
+
+@connection128@#@unaryType16@#16 => pipe,
+@unaryType17@#@connection128@#to_unary(16)(0) <= from_merge(31);
+to_unary_req(16)(0) <= from_merge_req(31);
+from_merge_ack(31) <= to_unary_ack(16)(0);
+
+@connection129@#@connection129@#to_external(0) <= from_unary(16)(0);
+to_external_req(0) <= from_unary_req(16)(0);
+from_unary_ack(16)(0) <=to_external_ack(0);
+
+@connection130@#@connection130@#-- DONE#@weight35@#-- DONE#@edgeType35@#-- DONE#@unaryType17@#-- DONE#@binaryType1@#-- DONE#@ternaryType5@#-- DONE#@srcValue1@#-- DONE#@mergeType32@#-- DONE#@mergeBias32@#-- DONE#@mergeInputs32@#-- DONE#@copyOutputs22@#-- DONE#@sources@#1#@sinks@#0#@copies@#22#@merges@#32#@unaryNodes@#17#@binaryNodes@#1#@ternaryNodes@#5#@edges@#35#@toplvlInputs@#1#@toplvlOutputs@#1#@info@#GENERATED: Thu Nov  5 09:36:22 2015
+--#
